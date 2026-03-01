@@ -1,13 +1,14 @@
 import streamlit as st
 import requests
-from openai import OpenAI
+from groq import Groq 
 from bs4 import BeautifulSoup
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
-client= OpenAI()
-api_key = os.getenv("OPENAI_API_KEY")
+my_api_key = os.getenv("GROQ_API_KEY")
+client= Groq(api_key=my_api_key)
+
 
 
 # article colletinga nd scraping paragraphs
@@ -31,16 +32,21 @@ def fetch_Article(url):
         return content,"Success"
 
     except Exception as e:
-        print("Extracting Error")
+        st.error("Extracting Error")
 
 # Openai integration 
 
 def summarize_and_translate(text,target_language,summary_length):
-    prompt=("Please,summarize the following text in approximately "+str(summary_length)+" sentences."+" Then translate the summary into "+str(target_language)+"\n\n"+" Text: "+text[:4000])
+    prompt = (
+        "Analyze the following text.\n"+
+        "Write a summary that contains EXACTLY "+str(summary_length-3)+" sentences. Not one sentence more, and not one sentence less. Count your sentences carefully.\n"+
+        "The entire text MUST be written exclusively in "+str(target_language)+". Do NOT write a single word of English or any other language.\n"+
+        "Do NOT include conversational filler like 'Here is the summary'. Output ONLY the final "+str(target_language)+" text.\n\n"+
+        "Text to summarize:\n"+text[:4000] )
 
     try:
         response=client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="llama-3.1-8b-instant",
             messages=[
                 {"role":"system","content":"You are highly skilled summarizer and translator"},
                 {"role":"user","content":prompt}
@@ -49,7 +55,7 @@ def summarize_and_translate(text,target_language,summary_length):
         return response.choices[0].message.content.strip()
 
     except Exception as e:
-        print("An AI errpr occured."+str(e))
+        st.error("An AI errpr occured."+str(e))
 
 
 # UI design with streamlit
