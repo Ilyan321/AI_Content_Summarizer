@@ -1,0 +1,22 @@
+
+header= extra communication -telling then who we are, what we want, how we want something
+User-Agent - telling company that we are not bots
+
+
+
+*Used streamlit tags in program
+
+	st.error(): Used to show a red error message if the URL fetching fails, no text is found, or the AI API crashes.
+	st.set_page_config(): Used at the very beginning to set the browser tab's title and favicon.
+	st.title(): Used to display the large main heading at the top of the web app.
+	st.sidebar.header(): Used to display the "Settings" heading inside the left-hand sidebar menu.
+	st.sidebar.selectbox(): Used to provide a dropdown menu in the sidebar for selecting the target translation language.
+	st.sidebar.slider(): Used to create a slider in the sidebar for the user to pick the exact number of sentences for the summary.
+	st.text_input(): Used to create a text box where the user can paste the URL of the article they want to summarize.
+	st.button(): Used to create the "Analyze Content" button that the user clicks to start the whole process.
+	st.spinner(): Used to show a temporary loading animation while the app waits for the website data and the AI response.
+	st.success(): Used to show a green "Done!" message when the AI successfully finishes the summary.
+	st.write(): Used to print the simple text line "Review your summary:" just before showing the final result.
+	st.info(): Used to display the final, translated summary inside a visually distinct blue box.
+	st.warning(): Used to show a yellow alert message prompting the user to enter a URL if they click the button while the text box is empty.
+

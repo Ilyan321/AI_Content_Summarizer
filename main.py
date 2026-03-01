@@ -59,6 +59,8 @@ def summarize_and_translate(text,target_language,summary_length):
 
 
 # UI design with streamlit
+st.set_page_config(page_title="AI Content Summarizer and Translator",page_icon="🗣️")
+
 st.title("AI Content Summarizer and Translator")
 st.sidebar.header("Settings")
 target_lang=st.sidebar.selectbox("Choose Output language: ",["English","Spanish","German","Urdu","French","Sindhi","Japanese"])
