@@ -34,7 +34,7 @@ def fetch_Article(url):
     except Exception as e:
         st.error("Extracting Error")
 
-# Openai integration 
+# Groq AI integration 
 
 def summarize_and_translate(text,target_language,summary_length):
     prompt = (
