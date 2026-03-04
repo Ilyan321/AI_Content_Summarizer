@@ -42,7 +42,7 @@ def summarize_and_translate(text,target_language,summary_length):
         "Write a summary that contains EXACTLY "+str(summary_length-3)+" sentences. Not one sentence more, and not one sentence less. Count your sentences carefully.\n"+
         "The entire text MUST be written exclusively in "+str(target_language)+". Do NOT write a single word of English or any other language.\n"+
         "Do NOT include conversational filler like 'Here is the summary'. Output ONLY the final "+str(target_language)+" text.\n\n"+
-        "Text to summarize:\n"+text[:20000] )
+        "Text to summarize:\n"+text[:10000] )
 
     try:
         response=client.chat.completions.create(
