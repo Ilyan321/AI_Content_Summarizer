@@ -1,0 +1,8 @@
+Rag stands for Reality-Augmented Generation
+	it takes pdfs and analyzes the data to give accurate answers.
+	*No hallucination in AI, or madeup things.
+
+Steps to learning RAG
+1. Document loading and Splitting
+	*Chunking: dividing data in small parts. large enough to be meaningful and small enough to be in AIs capability to read.
+	
